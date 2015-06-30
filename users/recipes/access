@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+userName=chris
+publicKey=`cat files/default/chris_kobrzak.pub`
+
+useradd -s /bin/bash \
+  -G docker,sudo \
+  -m \
+  $userName
+
+passwd $userName
+
+mkdir /home/$userName/.ssh
+touch /home/$userName/.ssh/authorized_keys
+echo "$publicKey" >> /home/$userName/.ssh/authorized_keys
+chmod 0700 /home/$userName/.ssh
+chmod 0600 /home/$userName/.ssh/authorized_keys
+chown -R $userName:$userName /home/$userName/.ssh
+
+cp -fp files/default/sshd_config /etc/ssh/
+service ssh reload
+
+exit 0
