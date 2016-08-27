@@ -2,7 +2,7 @@
 
 DEBIAN_FRONTEND=noninteractive \
 apt-get install -y \
-  ack \
+  ack-grep \
   htop \
   tree
 
