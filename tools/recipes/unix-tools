@@ -3,7 +3,10 @@
 DEBIAN_FRONTEND=noninteractive \
 apt-get install -y \
   ack-grep \
+  go \
   htop \
   tree
+
+go get github.com/asciimoo/wuzz
 
 exit 0
